@@ -2,7 +2,7 @@ import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 
-// GET ALL POSTS BY LOGGED IN USER
+// GET ALL USERS
 const getUsers = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/api/users`, {
     method: 'GET',
