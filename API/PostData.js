@@ -11,8 +11,24 @@ const getAuthUserPosts = (id) => new Promise((resolve, reject) => {
     },
   })
     .then((response) => response.json())
-    .then((data) => resolve((data)))
+    .then((data) => resolve(data))
     .catch(reject);
 });
 
-export default getAuthUserPosts;
+const getSinglePost = (postId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/api/post/${postId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+export {
+  getAllPosts,
+  getSinglePost,
+
+};
