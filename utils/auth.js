@@ -5,6 +5,9 @@ import { clientCredentials } from './client';
 const checkUser = (uid) => new Promise((resolve, reject) => {
   fetch(`${clientCredentials.databaseURL}/checkuser?uid=${uid}`, {
     method: 'POST',
+    body: JSON.stringify({
+      uid,
+    }),
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
