@@ -3,8 +3,8 @@ import { clientCredentials } from '../utils/client';
 const endpoint = clientCredentials.databaseURL;
 
 // GET ALL POSTS BY LOGGED IN USER
-const getAuthUserPosts = (id) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/api/user/${id}/posts`, {
+const getAllPosts = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/api/posts`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
