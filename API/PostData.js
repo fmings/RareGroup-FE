@@ -70,4 +70,5 @@ export {
   createPost,
   updatePost,
   getAuthUserPosts,
+  deletePost,
 };

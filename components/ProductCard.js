@@ -2,8 +2,15 @@ import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { PropTypes } from 'prop-types';
 import Link from 'next/link';
+import { deletePost } from '../API/PostData';
 
-export default function PostCard({ postObj }) {
+function PostCard({ postObj, onUpdate }) {
+  const deleteThisPost = () => {
+    if (window.confirm(`Delete ${postObj.title}?`)) {
+      deletePost(postObj.id).then(() => onUpdate());
+    }
+  };
+
   return (
     <>
       <Card>
@@ -16,6 +23,9 @@ export default function PostCard({ postObj }) {
         <Link href={`/post/edit/${postObj.id}`} passHref>
           <Button>Edit</Button>
         </Link>
+        <Button variant="danger" onClick={deleteThisPost} className="m-2">
+          DELETE
+        </Button>
       </Card>
     </>
   );
@@ -28,4 +38,7 @@ PostCard.propTypes = {
     imageUrl: PropTypes.string,
     content: PropTypes.string,
   }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
+
+export default PostCard;

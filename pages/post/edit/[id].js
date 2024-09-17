@@ -12,5 +12,5 @@ export default function EditPost() {
     getSinglePost(id).then(setEditPost);
   }, [id]);
 
-  return <PostForm obj={editPost} />;
+  return (<PostForm obj={editPost} />);
 }

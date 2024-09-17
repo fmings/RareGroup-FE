@@ -11,7 +11,7 @@ import getCatgories from '../../API/CategoryData';
 
 const initialState = {
   title: '',
-  image: '',
+  imageUrl: '',
   content: '',
   approved: true,
 };
