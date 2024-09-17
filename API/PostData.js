@@ -61,6 +61,7 @@ const updatePost = (payload, postId) => new Promise((resolve, reject) => {
     body: JSON.stringify(payload),
   })
     .then(resolve)
+>>>>>>>>> Temporary merge branch 2
     .catch(reject);
 });
 
