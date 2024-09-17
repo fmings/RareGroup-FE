@@ -38,7 +38,6 @@ const getSinglePost = (postId) => new Promise((resolve, reject) => {
     .then((data) => resolve(data))
     .catch(reject);
 });
-
 const createPost = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/api/post`, {
     method: 'POST',
@@ -61,6 +60,16 @@ const updatePost = (payload, postId) => new Promise((resolve, reject) => {
     body: JSON.stringify(payload),
   })
     .then(resolve)
+// GET ALL POSTS BY LOGGED IN USER
+const getAuthUserPosts = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/api/user/${id}/posts`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve((data)))
     .catch(reject);
 });
 

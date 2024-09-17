@@ -3,7 +3,7 @@ import { clientCredentials } from '../utils/client';
 const endpoint = clientCredentials.databaseURL;
 
 // GET ALL CATEGORIES
-const getCatgories = () => new Promise((resolve, reject) => {
+const getCategories = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/api/categories`, {
     method: 'GET',
     headers: {

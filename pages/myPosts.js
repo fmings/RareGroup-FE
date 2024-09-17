@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import getAuthUserPosts from '../API/PostData';
+import { getAuthUserPosts } from '../API/PostData';
 import { useAuth } from '../utils/context/authContext';
 import getUsers from '../API/UserData';
+import PostCard from '../components/ProductCard';
 
 export default function ViewMyPosts() {
   const [userPosts, setUserPosts] = useState([]);
@@ -21,13 +22,12 @@ export default function ViewMyPosts() {
 
   const getAllUsersPosts = () => {
     getAuthUserPosts(userId).then((response) => {
-      setUserPosts(response.posts);
+      const sortedPosts = response.posts.sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate));
+      setUserPosts(sortedPosts);
     });
   };
 
   useEffect(() => {
-    console.warn('userid', userId);
-    console.warn('useruid', user.uid);
     findUserId();
   }, []);
 
@@ -37,13 +37,12 @@ export default function ViewMyPosts() {
     }
   }, [userId]);
 
-  // NEED TO PLUG IN POST CARD COMPONENT ONCE RECEIVED FROM FJM
   return (
     <div
       className="d-flex flex-wrap"
     >
       {console.warn('userPosts', userPosts)}
-      {userPosts.map((userPost) => (userPost.title))}
+      {userPosts.map((userPost) => (<PostCard postObj={userPost} />))}
     </div>
   );
 }
