@@ -2,7 +2,7 @@ import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 
-// GET ALL TAGS
+// GET ALL CATEGORIES
 const getTags = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/api/tags`, {
     method: 'GET',
