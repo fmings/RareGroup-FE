@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getAuthUserPosts } from '../API/PostData';
 import { useAuth } from '../utils/context/authContext';
-import getUsers from '../API/UserData';
+import { getUsers } from '../API/UserData';
 import PostCard from '../components/ProductCard';
 
 export default function ViewMyPosts() {
