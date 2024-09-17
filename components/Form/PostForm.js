@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
-// import { useAuth } from '../../utils/context/authContext';
+import { useAuth } from '../../utils/context/authContext';
 // import getTags from '../../API/TagData';
 import { createPost, updatePost } from '../../API/PostData';
 import getCatgories from '../../API/CategoryData';
@@ -21,7 +21,7 @@ export default function PostForm({ obj }) {
   // const [tags, setTags] = useState([]);
   const [categories, setCategories] = useState([]);
   const router = useRouter();
-  // const { user } = useAuth();
+  const { user } = useAuth();
 
   useEffect(() => {
     getCatgories().then(setCategories);
@@ -38,6 +38,15 @@ export default function PostForm({ obj }) {
     }));
   };
 
+  const handleChangeForCategory = (e) => {
+    const { name, value } = e.target;
+    setFormInput((prevState) => ({
+      ...prevState,
+      // In this case i parse the value since I need the value to be an integer verse a string and I only a m dealing with one value in the form
+      [name]: parseInt(value, 10),
+    }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.id) {
@@ -45,7 +54,7 @@ export default function PostForm({ obj }) {
       updatePost(payload, obj.id).then(() => router.push('/'));
       console.warn(payload);
     } else {
-      const updatePayload = { ...formInput, publicationDate: new Date() };
+      const updatePayload = { ...formInput, userId: user.id, publicationDate: new Date() };
       createPost(updatePayload).then(() => {
         router.push('/');
       });
@@ -96,7 +105,7 @@ export default function PostForm({ obj }) {
         <Form.Select
           aria-label="Category"
           name="categoryId"
-          onChange={handleChange}
+          onChange={handleChangeForCategory}
           className="mb-3"
           value={formInput.categoryId}
           required
@@ -106,7 +115,7 @@ export default function PostForm({ obj }) {
             categories.map((c) => (
               <option
                 key={c.id}
-                value={parseInt(c.id, 10)}
+                value={c.id}
               >
                 {c.label}
               </option>
