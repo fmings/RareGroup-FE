@@ -73,7 +73,7 @@ export default function PostForm({ obj }) {
         <Form.Control
           type="url"
           placeholder="Enter Image URL"
-          name="image"
+          name="imageUrl"
           value={formInput.imageUrl}
           onChange={handleChange}
           required
@@ -98,7 +98,7 @@ export default function PostForm({ obj }) {
           name="categoryId"
           onChange={handleChange}
           className="mb-3"
-          value={obj.categoryId}
+          value={formInput.categoryId}
           required
         >
           <option value="">Select a Category</option>
