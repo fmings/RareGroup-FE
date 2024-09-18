@@ -60,7 +60,7 @@ export default function TagModal({ onClose, postId }) {
           <p><strong>Select some Tags</strong></p>
           <FloatingLabel controlId="floatingTags">
             <Form.Group className="mb-3">
-              {tag.map((t) => (
+              {tag.length !== 0 ? tag.map((t) => (
                 <Form.Check
                   type="checkbox"
                   name="tagId"
@@ -70,7 +70,7 @@ export default function TagModal({ onClose, postId }) {
                   key={t.id}
                   value={t.id}
                 />
-              ))}
+              )) : <h5>There are no more tags</h5>}
             </Form.Group>
           </FloatingLabel>
         </Modal.Body>
