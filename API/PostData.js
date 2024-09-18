@@ -64,10 +64,22 @@ const updatePost = (payload, postId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const deletePost = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/posts/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
   getAllPosts,
   getSinglePost,
   createPost,
   updatePost,
   getAuthUserPosts,
+  deletePost,
 };

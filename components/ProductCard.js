@@ -3,14 +3,23 @@ import { Button, Card } from 'react-bootstrap';
 import { PropTypes } from 'prop-types';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { deletePost } from '../API/PostData';
+import { useAuth } from '../utils/context/authContext';
 import TagModal from './TagModal';
 
-export default function PostCard({ postObj }) {
+export default function PostCard({ postObj, onUpdate }) {
+  const { user } = useAuth();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
 
   const handleTag = () => {
     setIsModalOpen(true);
+  };
+
+  const deleteThisPost = () => {
+    if (window.confirm(`Delete ${postObj.title}?`)) {
+      deletePost(postObj.id).then(() => onUpdate());
+    }
   };
 
   return (
@@ -22,11 +31,18 @@ export default function PostCard({ postObj }) {
         <Link href={`/post/${postObj.id}`} passHref>
           <Button>View</Button>
         </Link>
-        <Link href={`/post/edit/${postObj.id}`} passHref>
-          <Button>Edit</Button>
-        </Link>
-        { router.asPath === '/myPosts' && <Button onClick={handleTag}>Add a Tag</Button> }
+        {user && user.id === postObj.userId && (
+          <Link href={`/post/edit/${postObj.id}`} passHref>
+            <Button>Edit</Button>
+          </Link>
+        )}
+        {router.asPath === '/myPosts' && <Button onClick={handleTag}>Add a Tag</Button> }
         { isModalOpen && <TagModal onClose={() => setIsModalOpen(false)} postId={postObj.id} /> }
+        {user && user.id === postObj.userId && (
+          <Button variant="danger" onClick={deleteThisPost} className="m-2">
+            DELETE
+          </Button>
+        )}
       </Card>
     </>
   );
@@ -38,5 +54,7 @@ PostCard.propTypes = {
     title: PropTypes.string,
     imageUrl: PropTypes.string,
     content: PropTypes.string,
+    userId: PropTypes.number,
   }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
