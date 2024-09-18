@@ -42,7 +42,7 @@ export default function ViewMyPosts() {
       className="d-flex flex-wrap"
     >
       {console.warn('userPosts', userPosts)}
-      {userPosts.map((userPost) => (<PostCard postObj={userPost} />))}
+      {userPosts.map((userPost) => (<PostCard postObj={userPost} onUpdate={getAllUsersPosts} />))}
     </div>
   );
 }
