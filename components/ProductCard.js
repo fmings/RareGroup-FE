@@ -16,24 +16,28 @@ export default function PostCard({ postObj, onUpdate }) {
 
   return (
     <>
-      <Card>
-        <Card.Img variant="top" src={postObj.imageUrl} alt={postObj.title} style={{ height: '350px' }} />
-        <h1>{postObj.title}</h1>
-        <p>{postObj.content}</p>
-        <Link href={`/post/${postObj.id}`} passHref>
-          <Button>View</Button>
-        </Link>
-        {user && user.id === postObj.userId && (
-          <Link href={`/post/edit/${postObj.id}`} passHref>
-            <Button>Edit</Button>
-          </Link>
-        )}
-        {user && user.id === postObj.userId && (
-          <Button variant="danger" onClick={deleteThisPost} className="m-2">
-            DELETE
-          </Button>
-        )}
-      </Card>
+      <div className="postCard">
+        <Card style={{ width: '50rem', height: '40rem', margin: '10px' }}>
+          <Card.Img variant="top" src={postObj.imageUrl} alt={postObj.title} style={{ height: '450px', width: '800px' }} />
+          <h1>{postObj.title}</h1>
+          <p>{postObj.content}</p>
+          <div>
+            <Link href={`/post/${postObj.id}`} passHref>
+              <Button className="view-btn">View</Button>
+            </Link>
+            {user && user.id === postObj.userId && (
+            <Link href={`/post/edit/${postObj.id}`} passHref>
+              <Button className="edit-btn">Edit</Button>
+            </Link>
+            )}
+            {user && user.id === postObj.userId && (
+            <Button className="delete-btn" variant="danger" onClick={deleteThisPost}>
+              Delete
+            </Button>
+            )}
+          </div>
+        </Card>
+      </div>
     </>
   );
 }
