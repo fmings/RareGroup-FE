@@ -39,9 +39,8 @@ export default function ViewMyPosts() {
 
   return (
     <div
-      className="d-flex flex-wrap"
+      className="post-cards-container"
     >
-      {console.warn('userPosts', userPosts)}
       {userPosts.map((userPost) => (<PostCard postObj={userPost} onUpdate={getAllUsersPosts} />))}
     </div>
   );

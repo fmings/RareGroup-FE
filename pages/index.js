@@ -17,11 +17,11 @@ function Home() {
 
   return (
     <>
-      <div className="text-center my-4">
+      <div className="index">
         <Link href="/post/new" passHref>
-          <Button>Add A Post</Button>
+          <Button className="add-post-btn">Add A Post</Button>
         </Link>
-        <div>
+        <div className="class">
           {posts.map((p) => (
             <PostCard className="posts" key={p.id} postObj={p} onUpdate={getAllThePosts} />
           ))}
