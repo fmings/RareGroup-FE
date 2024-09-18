@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Card } from 'react-bootstrap';
 import getTags from '../API/TagData';
 
 export default function ViewCategories() {
@@ -16,8 +17,11 @@ export default function ViewCategories() {
   }, []);
 
   return (
-    <div>
-      {tags.map((tag) => <h3>{tag.label}</h3>)}
-    </div>
+    <>
+      <h1 className="header">All Tags</h1>
+      <div className="tag-container">
+        {tags.map((tag) => <Card className="tag-card"><h3>{tag.label}</h3></Card>)}
+      </div>
+    </>
   );
 }
