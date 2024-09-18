@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { PropTypes } from 'prop-types';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import TagModal from './TagModal';
 
 export default function PostCard({ postObj }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
+
+  const handleTag = () => {
+    setIsModalOpen(true);
+  };
+
   return (
     <>
       <Card>
@@ -16,6 +25,8 @@ export default function PostCard({ postObj }) {
         <Link href={`/post/edit/${postObj.id}`} passHref>
           <Button>Edit</Button>
         </Link>
+        { router.asPath === '/myPosts' && <Button onClick={handleTag}>Add a Tag</Button> }
+        { isModalOpen && <TagModal onClose={() => setIsModalOpen(false)} postId={postObj.id} /> }
       </Card>
     </>
   );

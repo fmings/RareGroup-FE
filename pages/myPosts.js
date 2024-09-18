@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { getAuthUserPosts } from '../API/PostData';
 import { useAuth } from '../utils/context/authContext';
@@ -41,8 +42,7 @@ export default function ViewMyPosts() {
     <div
       className="d-flex flex-wrap"
     >
-      {console.warn('userPosts', userPosts)}
-      {userPosts.map((userPost) => (<PostCard postObj={userPost} />))}
+      {userPosts.map((userPost) => (<PostCard key={userPost.id} postObj={userPost} />))}
     </div>
   );
 }
