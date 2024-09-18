@@ -40,7 +40,7 @@ export default function ViewMyPosts() {
 
   return (
     <div
-      className="d-flex flex-wrap"
+      className="post-cards-container"
     >
       {userPosts.map((userPost) => (<PostCard key={userPost.id} postObj={userPost} onUpdate={getAllUsersPosts} />))}
     </div>
