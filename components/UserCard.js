@@ -12,7 +12,8 @@ export default function UserCard({ userObj }) {
 
   return (
     <div>
-      <Card style={{ width: '18rem' }} onClick={handleClick}>
+      <Card style={{ width: '18rem' }} onClick={handleClick} className="user-card">
+        <img className="user-card-avatar" alt="default avatart" src="/user.png" width="50" />
         <h1>{userObj.firstName} {userObj.lastName}</h1>
       </Card>
     </div>

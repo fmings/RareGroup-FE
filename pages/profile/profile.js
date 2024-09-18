@@ -14,8 +14,11 @@ export default function ViewProfiles() {
   }, []);
 
   return (
-    <div>
-      {users.map((user) => (<UserCard userObj={user} />))}
-    </div>
+    <>
+      <h1 className="header">Users</h1>
+      <div className="user-container">
+        {users.map((user) => (<UserCard userObj={user} />))}
+      </div>
+    </>
   );
 }
