@@ -15,4 +15,17 @@ const getUsers = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export default getUsers;
+// GET SINGLE USER BY ID
+const getSingleUser = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/api/user/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve((data)))
+    .catch(reject);
+});
+
+export { getUsers, getSingleUser };
