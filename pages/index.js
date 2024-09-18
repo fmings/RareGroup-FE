@@ -11,6 +11,8 @@ function Home() {
     getAllPosts().then(setPosts);
   };
 
+  console.warn(posts);
+
   useEffect(() => {
     getAllThePosts(setPosts);
   }, []);

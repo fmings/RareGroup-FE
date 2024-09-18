@@ -21,6 +21,11 @@ export default function ViewPost() {
         <h5>Title: {postDetails.title || ''}</h5>
         <p>Date: {postDetails.publicationDate || ''}</p>
         <p>Description: {postDetails.content || ''}</p>
+        {postDetails.tags ? postDetails.tags.map((tag) => (
+          <p key={tag.id} className="tag">
+            {tag.label}
+          </p>
+        )) : ''}
         <hr />
       </div>
     </div>

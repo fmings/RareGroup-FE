@@ -29,6 +29,11 @@ export default function PostCard({ postObj, onUpdate }) {
         <Card.Img variant="top" src={postObj.imageUrl} alt={postObj.title} style={{ height: '350px' }} />
         <h1>{postObj.title}</h1>
         <p>{postObj.content}</p>
+        {postObj.tags ? postObj.tags.map((tag) => (
+          <p key={tag.id} className="tag">
+            {tag.label}
+          </p>
+        )) : ''}
         <Link href={`/post/${postObj.id}`} passHref>
           <Button>View</Button>
         </Link>
@@ -57,6 +62,10 @@ PostCard.propTypes = {
     imageUrl: PropTypes.string,
     content: PropTypes.string,
     userId: PropTypes.number,
+    tags: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
+      label: PropTypes.string,
+    })),
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
