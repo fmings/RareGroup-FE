@@ -5,6 +5,7 @@ import {
   FloatingLabel, Button, Modal, Form,
 } from 'react-bootstrap';
 import { addTagToPost, getTags } from '../API/TagData';
+import { getSinglePost } from '../API/PostData';
 
 export default function TagModal({ onClose, postId }) {
   const router = useRouter();
@@ -12,8 +13,12 @@ export default function TagModal({ onClose, postId }) {
   const [formInput, setFormInput] = useState([]);
 
   useEffect(() => {
-    getTags().then(setTags);
-  }, []);
+    Promise.all([getTags(), getSinglePost(postId).then((post) => post.tags)]) // Get all tags and post-specific tags
+      .then(([allTags, postTags]) => {
+        const availableTags = allTags.filter((t) => !postTags.some((postTag) => postTag.id === t.id));
+        setTags(availableTags);
+      });
+  }, [postId]);
 
   // This is adding the tag to the post and then closing the modal and then going back to the myPosts page.
   const handleClose = () => {
