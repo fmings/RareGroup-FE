@@ -15,6 +15,7 @@ export default function TagModal({ onClose, postId }) {
     getTags().then(setTags);
   }, []);
 
+  // This is adding the tag to the post and then closing the modal and then going back to the myPosts page.
   const handleClose = () => {
     addTagToPost(postId, formInput).then(() => {
       onClose();
@@ -23,14 +24,22 @@ export default function TagModal({ onClose, postId }) {
   };
 
   const handleChange = (e) => {
+    // Destructure event object to get type and checked properties of the target element
     const { type, checked } = e.target;
+
     if (type === 'checkbox') {
+      // Create a copy of the current formInput state using spread syntax
       const currentTagIds = [...formInput];
       const tagId = parseInt(e.target.value, 10); // Assuming value attribute holds tag id
       if (checked) {
+        // Add the tag ID to the copied formInput array
         currentTagIds.push(tagId);
       } else {
+        // If the checkbox is unchecked, remove the unchecked tagId from the array of tagIds
+
+        // Find the index of the tag ID in the copied formInput array
         const index = currentTagIds.indexOf(tagId);
+        // Remove the element at the found index (the tag ID)
         currentTagIds.splice(index, 1);
       }
       setFormInput(currentTagIds);

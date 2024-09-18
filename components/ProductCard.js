@@ -12,6 +12,7 @@ export default function PostCard({ postObj, onUpdate }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
 
+  // This function sets the state to true so when the add to tag button is clicked it will open to Modal
   const handleTag = () => {
     setIsModalOpen(true);
   };
@@ -37,6 +38,7 @@ export default function PostCard({ postObj, onUpdate }) {
           </Link>
         )}
         {router.asPath === '/myPosts' && <Button onClick={handleTag}>Add a Tag</Button> }
+        {/* As long as isModalOpen is true, the tag modal will open and we are setting the modal state to false in the onlose function so it can be can be passed to the function that will be used by a button in the TagModal component that will close the Modal */}
         { isModalOpen && <TagModal onClose={() => setIsModalOpen(false)} postId={postObj.id} /> }
         {user && user.id === postObj.userId && (
           <Button variant="danger" onClick={deleteThisPost} className="m-2">
