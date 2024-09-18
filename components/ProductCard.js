@@ -13,6 +13,9 @@ export default function PostCard({ postObj }) {
         <Link href={`/post/${postObj.id}`} passHref>
           <Button>View</Button>
         </Link>
+        <Link href={`/post/edit/${postObj.id}`} passHref>
+          <Button>Edit</Button>
+        </Link>
       </Card>
     </>
   );

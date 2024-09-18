@@ -2,7 +2,6 @@ import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 
-// GET ALL POSTS BY LOGGED IN USER
 const getAllPosts = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/api/posts`, {
     method: 'GET',
@@ -40,8 +39,35 @@ const getAuthUserPosts = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const createPost = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/api/post`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
+const updatePost = (payload, postId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/post/${postId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then(resolve)
+    .catch(reject);
+});
+
 export {
   getAllPosts,
   getSinglePost,
+  createPost,
+  updatePost,
   getAuthUserPosts,
 };
