@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
-import getTags from '../API/TagData';
+import { getTags } from '../API/TagData';
 
 export default function ViewCategories() {
   const [tags, setTags] = useState([]);
