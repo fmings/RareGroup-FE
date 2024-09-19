@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { deletePost } from '../API/PostData';
 import { useAuth } from '../utils/context/authContext';
 import TagModal from './TagModal';
+import { deleteTagFromPost } from '../API/TagData';
 
 export default function PostCard({ postObj, onUpdate }) {
   const { user } = useAuth();
@@ -15,6 +16,17 @@ export default function PostCard({ postObj, onUpdate }) {
   // This function sets the state to true so when the add to tag button is clicked it will open to Modal
   const handleTag = () => {
     setIsModalOpen(true);
+  };
+
+  const handleDeleteTag = (tagId) => {
+    deleteTagFromPost(postObj.id, tagId)
+      .then(() => {
+        onUpdate(); // Update the state or re-fetch data after the tag is deleted
+        console.log(`Tag ${tagId} deleted successfully`);
+      })
+      .catch((error) => {
+        console.error(`Error deleting tag ${tagId}:`, error);
+      });
   };
 
   const deleteThisPost = () => {
@@ -31,9 +43,14 @@ export default function PostCard({ postObj, onUpdate }) {
           <h1>{postObj.title}</h1>
           <p>{postObj.content}</p>
           {postObj.tags ? postObj.tags.map((tag) => (
-            <p key={tag.id} className="tag">
+            <Button
+              key={tag.id}
+              variant="outline-secondary"
+              className="tag-btn"
+              onClick={() => handleDeleteTag(tag.id)}
+            >
               {tag.label}
-            </p>
+            </Button>
           )) : ''}
           <div>
             <Link href={`/post/${postObj.id}`} passHref>
