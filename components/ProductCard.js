@@ -26,15 +26,17 @@ export default function PostCard({ postObj, onUpdate }) {
   return (
     <>
       <div className="postCard">
-        <Card style={{ width: '50rem', height: '40rem', margin: '10px' }}>
+        <Card className="card-content-container" style={{ width: '50rem', margin: '10px' }}>
           <Card.Img variant="top" src={postObj.imageUrl} alt={postObj.title} style={{ height: '450px', width: '800px' }} />
           <h1>{postObj.title}</h1>
           <p>{postObj.content}</p>
-          {postObj.tags ? postObj.tags.map((tag) => (
-            <p key={tag.id} className="tag">
-              {tag.label}
-            </p>
-          )) : ''}
+          <div className="tagContainer">
+            {postObj.tags ? postObj.tags.map((tag) => (
+              <p key={tag.id} className="tag">
+                {tag.label}
+              </p>
+            )) : ''}
+          </div>
           <div>
             <Link href={`/post/${postObj.id}`} passHref>
               <Button className="view-btn">View</Button>

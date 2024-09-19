@@ -289,3 +289,13 @@ body {
 .post-content {
   font-size: 1.5rem;
 }
+
+.tagContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.tag {
+  margin: 5px;
+}
