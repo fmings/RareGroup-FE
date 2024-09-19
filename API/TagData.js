@@ -36,4 +36,21 @@ const addTagToPost = (postId, tagIds) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getTags, addTagToPost };
+const deleteTagFromPost = (postId, tagId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/api/post/${postId}/tag/${tagId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        resolve(`Tag ${tagId} has been successfully deleted from post ${postId}`);
+      } else {
+        reject(new Error(`Failed to delete tag: ${response.statusText}`));
+      }
+    })
+    .catch((error) => reject(error));
+});
+
+export { getTags, addTagToPost, deleteTagFromPost };
