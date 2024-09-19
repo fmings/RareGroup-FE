@@ -44,7 +44,7 @@ export default function PostCard({ postObj, onUpdate }) {
               <Button className="edit-btn">Edit</Button>
             </Link>
             )}
-            {router.asPath === '/myPosts' && <Button onClick={handleTag}>Add a Tag</Button> }
+            {router.asPath === '/myPosts' && <Button className="addTag-btn" onClick={handleTag}>Add a Tag</Button> }
             {/* As long as isModalOpen is true, the tag modal will open and we are setting the modal state to false in the onlose function so it can be can be passed to the function that will be used by a button in the TagModal component that will close the Modal */}
             { isModalOpen && <TagModal onClose={() => setIsModalOpen(false)} postId={postObj.id} /> }
             {user && user.id === postObj.userId && (

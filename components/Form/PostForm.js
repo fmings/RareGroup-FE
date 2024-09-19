@@ -63,7 +63,7 @@ export default function PostForm({ obj }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.id ? 'Update' : 'Create'} Post</h2>
+      <h2 className="text-dark mt-5">{obj.id ? 'Update' : 'Create'} Post</h2>
 
       {/* TITLE INPUT  */}
       <FloatingLabel controlId="floatingInput1" label="Post Title" className="mb-3">
@@ -142,7 +142,7 @@ export default function PostForm({ obj }) {
       </FloatingLabel> */}
 
       {/* SUBMIT BUTTON  */}
-      <Button variant="primary" type="submit">{obj.id ? 'Update' : 'Create'} Post</Button>
+      <Button className="create-post-btn" variant="primary" type="submit">{obj.id ? 'Update' : 'Create'} Post</Button>
     </Form>
   );
 }
