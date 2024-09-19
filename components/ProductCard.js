@@ -22,7 +22,6 @@ export default function PostCard({ postObj, onUpdate }) {
     deleteTagFromPost(postObj.id, tagId)
       .then(() => {
         onUpdate(); // Update the state or re-fetch data after the tag is deleted
-        console.log(`Tag ${tagId} deleted successfully`);
       })
       .catch((error) => {
         console.error(`Error deleting tag ${tagId}:`, error);
@@ -42,16 +41,18 @@ export default function PostCard({ postObj, onUpdate }) {
           <Card.Img variant="top" src={postObj.imageUrl} alt={postObj.title} style={{ height: '450px', width: '800px' }} />
           <h1>{postObj.title}</h1>
           <p>{postObj.content}</p>
-          {postObj.tags ? postObj.tags.map((tag) => (
-            <Button
-              key={tag.id}
-              variant="outline-secondary"
-              className="tag-btn"
-              onClick={() => handleDeleteTag(tag.id)}
-            >
-              {tag.label}
-            </Button>
-          )) : ''}
+          <div className="tagContainer">
+            {postObj.tags ? postObj.tags.map((tag) => (
+              <Button
+                key={tag.id}
+                variant="outline-secondary"
+                className="tag-btn"
+                onClick={() => handleDeleteTag(tag.id)}
+              >
+                {tag.label}
+              </Button>
+            )) : ''}
+          </div>
           <div>
             <Link href={`/post/${postObj.id}`} passHref>
               <Button className="view-btn">View</Button>

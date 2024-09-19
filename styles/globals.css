@@ -299,6 +299,14 @@ body {
   box-shadow: 2px 2px 3px black;
 }
 
+.addTag-btn:hover {
+  background-color: #53423d;
+ }
+
+ .addTag-btn:active {
+  background-color: #53423d !important;
+ }
+
 .form-header {
   color: #53423d;
 }
@@ -331,6 +339,24 @@ body {
   flex-wrap: wrap;
 }
 
-.tag {
+.tag-btn {
   margin: 5px;
+  width: fit-content;
+}
+
+.tag-btn:hover {
+  background-color: #8b0000;
+  content:"x";
+  border: none;
+}
+
+.tag-btn:hover::after {
+  background-color: #8b0000;
+  content:" X";
+  border: none;
+}
+
+
+.card-content-container {
+  padding-bottom: 10px;
 }

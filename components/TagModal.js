@@ -24,7 +24,7 @@ export default function TagModal({ onClose, postId }) {
   const handleClose = () => {
     addTagToPost(postId, formInput).then(() => {
       onClose();
-      router.push('/myPosts');
+      router.push('/');
     });
   };
 
