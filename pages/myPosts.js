@@ -21,9 +21,11 @@ export default function ViewMyPosts() {
     });
   };
 
+  console.warn(userPosts);
+
   const getAllUsersPosts = () => {
     getAuthUserPosts(userId).then((response) => {
-      const sortedPosts = response.posts.sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate));
+      const sortedPosts = response.sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate));
       setUserPosts(sortedPosts);
     });
   };
