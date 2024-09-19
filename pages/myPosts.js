@@ -42,7 +42,7 @@ export default function ViewMyPosts() {
 
   return (
     <div
-      className="post-cards-container"
+      className="post-cards-container index"
     >
       {userPosts.map((userPost) => (<PostCard key={userPost.id} postObj={userPost} onUpdate={getAllUsersPosts} />))}
     </div>

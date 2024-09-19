@@ -63,7 +63,7 @@ export default function PostForm({ obj }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-dark mt-5">{obj.id ? 'Update' : 'Create'} Post</h2>
+      <h2 className="mt-5 form-header">{obj.id ? 'Update' : 'Create'} Post</h2>
 
       {/* TITLE INPUT  */}
       <FloatingLabel controlId="floatingInput1" label="Post Title" className="mb-3">

@@ -32,6 +32,10 @@ body {
   background-color: #91736B !important;
 }
 
+.container {
+  max-width: 1000px;
+}
+
 .category-container {
   display: flex;
   flex-direction: row;
@@ -156,6 +160,15 @@ body {
   box-shadow: 2px 2px 3px black;
  }
 
+ .view-btn:hover {
+  background-color: #53423d;
+ }
+
+ .view-btn:active {
+  background-color: #53423d !important;
+ }
+
+
 .edit-btn{
  position: space-around;
  border-radius: 4%;
@@ -172,6 +185,14 @@ body {
  text-shadow: 1px 1px 2px black;
  box-shadow: 2px 2px 3px black;
 }
+
+.edit-btn:hover {
+  background-color: #53423d;
+ }
+
+ .edit-btn:active {
+  background-color: #53423d !important;
+ }
 
 .delete-btn{
   position: space-around;
@@ -206,6 +227,27 @@ body {
   text-shadow: 1px 1px 2px black;
   box-shadow: 2px 2px 3px black;
 }
+
+.add-post-btn:hover {
+  background-color: #53423d;
+ }
+
+ .add-post-btn:active {
+  background-color: #53423d !important;
+ }
+
+ .create-post-btn {
+  background-color: #91736b;
+  border: none;
+}
+
+.create-post-btn:hover {
+  background-color: #53423d;
+ }
+
+ .create-post-btn:active {
+  background-color: #53423d !important;
+ }
 
 .sign-out {
   position: space-around;
@@ -255,4 +297,66 @@ body {
   padding: 0 0 5px 0;
   text-shadow: 1px 1px 2px black;
   box-shadow: 2px 2px 3px black;
+}
+
+.addTag-btn:hover {
+  background-color: #53423d;
+ }
+
+ .addTag-btn:active {
+  background-color: #53423d !important;
+ }
+
+.form-header {
+  color: #53423d;
+}
+
+.post-details-container {
+  max-width: 700px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: auto auto;
+}
+
+.post-details-img {
+  margin: 35px 0px 35px 0px;
+  width: 700px;
+  border: 1px solid #53423d;
+}
+
+.details {
+  width: 700px;
+}
+
+.post-content {
+  font-size: 1.5rem;
+}
+
+.tagContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.tag-btn {
+  margin: 5px;
+  width: fit-content;
+}
+
+.tag-btn:hover {
+  background-color: #8b0000;
+  content:"x";
+  border: none;
+}
+
+.tag-btn:hover::after {
+  background-color: #8b0000;
+  content:" X";
+  border: none;
+}
+
+
+.card-content-container {
+  padding-bottom: 10px;
 }
