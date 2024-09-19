@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { getAuthUserPosts } from '../API/PostData';
 import { useAuth } from '../utils/context/authContext';
@@ -20,9 +21,11 @@ export default function ViewMyPosts() {
     });
   };
 
+  console.warn(userPosts);
+
   const getAllUsersPosts = () => {
     getAuthUserPosts(userId).then((response) => {
-      const sortedPosts = response.posts.sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate));
+      const sortedPosts = response.sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate));
       setUserPosts(sortedPosts);
     });
   };
@@ -41,7 +44,7 @@ export default function ViewMyPosts() {
     <div
       className="post-cards-container index"
     >
-      {userPosts.map((userPost) => (<PostCard postObj={userPost} onUpdate={getAllUsersPosts} />))}
+      {userPosts.map((userPost) => (<PostCard key={userPost.id} postObj={userPost} onUpdate={getAllUsersPosts} />))}
     </div>
   );
 }

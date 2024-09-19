@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { getSingleUser } from '../../API/UserData';
@@ -14,7 +15,7 @@ export default function ViewUser() {
 
   useEffect(() => {
     viewUserDetails();
-  }, [id]);
+  }, []);
 
   return (
     <div>

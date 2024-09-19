@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { getSinglePost } from '../../API/PostData';
@@ -28,6 +29,11 @@ export default function ViewPost() {
       <div className="text-dark details">
         <p>Posted on {formattedDate || ''}</p>
         <p className="post-content">{postDetails.content || ''}</p>
+        {postDetails.tags ? postDetails.tags.map((tag) => (
+          <p key={tag.id} className="tag">
+            {tag.label}
+          </p>
+        )) : ''}
         <hr />
       </div>
     </div>
