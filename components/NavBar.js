@@ -35,10 +35,10 @@ export default function NavBar() {
             <Link passHref href="/profile/profile">
               <Nav.Link>Browse Users</Nav.Link>
             </Link>
-            <Button className="sign-out" variant="danger" onClick={signOut}>
-              Sign Out
-            </Button>
           </Nav>
+          <Button className="sign-out ms-auto" variant="danger" onClick={signOut}>
+            Sign Out
+          </Button>
         </Navbar.Collapse>
       </Container>
     </Navbar>
