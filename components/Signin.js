@@ -17,11 +17,12 @@ function Signin() {
         paddingBlock: '0 5rem',
       }}
     >
-      <h1>Hi there!</h1>
-      <p>Click the button below to login!</p>
-      <Button type="button" size="lg" className="copy-btn" onClick={signIn}>
-        Sign In
-      </Button>
+      <h1>Welcome to RARE</h1>
+      <div className="sign-in-btn-container">
+        <Button type="button" size="lg" className="copy-btn" onClick={signIn}>
+          Sign In
+        </Button>
+      </div>
     </div>
   );
 }

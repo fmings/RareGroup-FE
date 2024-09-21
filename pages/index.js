@@ -8,7 +8,10 @@ function Home() {
   const [posts, setPosts] = useState([]);
 
   const getAllThePosts = () => {
-    getAllPosts().then(setPosts);
+    getAllPosts().then((postData) => {
+      const sortedPosts = postData.sort((a, b) => new Date(b.publicationDate) - new Date(a.publicationDate));
+      setPosts(sortedPosts);
+    });
   };
 
   console.warn(posts);
