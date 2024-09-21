@@ -360,3 +360,17 @@ body {
 .card-content-container {
   padding-bottom: 10px;
 }
+
+.copy-btn {
+  width: 250px;
+  background-color: #53423d;
+  border: none;
+}
+
+.copy-btn:hover {
+  background-color: #91736b;
+}
+
+.copy-btn:active {
+  background-color: #91736b !important;
+}
