@@ -374,3 +374,17 @@ body {
 .copy-btn:active {
   background-color: #91736b !important;
 }
+
+.details-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.category-details {
+  width: 100%;
+}
+
+.post-category {
+  text-align: right;
+}
