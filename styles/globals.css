@@ -372,5 +372,5 @@ body {
 }
 
 .copy-btn:active {
-  background-color: #91736b;
+  background-color: #91736b !important;
 }
