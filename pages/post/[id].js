@@ -29,6 +29,11 @@ export default function ViewPost() {
       <div className="text-dark details">
         <p>Posted on {formattedDate || ''}</p>
         <p className="post-content">{postDetails.content || ''}</p>
+        {postDetails.categories ? (
+          <p className="post-category">Category: {postDetails.categories.label}</p>
+        ) : (
+          <p>No category selected</p>
+        )}
         {postDetails.tags ? postDetails.tags.map((tag) => (
           <p key={tag.id} className="tag">
             {tag.label}

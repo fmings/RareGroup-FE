@@ -5,7 +5,6 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
-// import getTags from '../../API/TagData';
 import { createPost, updatePost } from '../../API/PostData';
 import getCatgories from '../../API/CategoryData';
 
@@ -18,14 +17,12 @@ const initialState = {
 
 export default function PostForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
-  // const [tags, setTags] = useState([]);
   const [categories, setCategories] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
 
   useEffect(() => {
     getCatgories().then(setCategories);
-    // getTags().then(setTags);
 
     if (obj.id) setFormInput(obj);
   }, [obj]);
@@ -124,23 +121,6 @@ export default function PostForm({ obj }) {
         </Form.Select>
       </FloatingLabel>
 
-      {/* TAG SELECT
-      <FloatingLabel controlId="floatingTags">
-        <Form.Group className="mb-3">
-          {tags.map((tag) => (
-            <Form.Check
-              type="checkbox"
-              name="tag_id"
-              label={tag.label}
-              checked={obj.tagId}
-              onChange={handleChange}
-              key={tag.id}
-              value={obj.id}
-            />
-          ))}
-        </Form.Group>
-      </FloatingLabel> */}
-
       {/* SUBMIT BUTTON  */}
       <Button className="create-post-btn" variant="primary" type="submit">{obj.id ? 'Update' : 'Create'} Post</Button>
     </Form>
@@ -154,7 +134,6 @@ PostForm.propTypes = {
     imageUrl: PropTypes.string,
     content: PropTypes.string,
     categoryId: PropTypes.number,
-    // tagId: PropTypes.number,
   }),
 };
 
